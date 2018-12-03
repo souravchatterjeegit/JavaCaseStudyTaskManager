@@ -11,6 +11,7 @@ The configuration will be -
 		<property name="password" value="root" />
 
 Please run the below queries in mysql before running the project-
+
 create table task(
 	task_id bigint not null auto_increment,
     parent_id bigint default 0,
@@ -21,15 +22,21 @@ create table task(
     task_ended boolean default false,
     primary key(task_id)
 );
+
 create table parent_task(
 	parent_id bigint not null auto_increment,
     parent_task varchar(50),
     primary key(parent_id)
 );
+
 insert into task values(1,0,'parent task','2018-08-01','2018-12-31',20,false);
+
 insert into parent_task values(1,'parent task');
+
 insert into task values(2,1,'another task','2018-11-01','2018-12-31',10,false);
+
 insert into parent_task values(2,'another task');
+
 
 BUILD :
 The deployment script is given in POM.xml and can be found in 
